@@ -1,19 +1,21 @@
-"use client";
+'use client';
 
-import React from "react";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
+import React from 'react';
+import { SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
 
-import { toast } from "react-hot-toast";
-import { Calendar } from "@/components/ui/calendar";
-import PieCard from "./pieCard";
-import ChartCard from "./chartCard";
-import ListCard from "./listCrad";
-import Header from "./header";
-import { ModeToggle } from "./modeToggle";
-import UsersTable from "./userTable";
-import MainCard from "./mainCard";
-import { logout } from "../login/actions";
+import { toast } from 'react-hot-toast';
+import { Calendar } from '@/components/ui/calendar';
+import PieCard from './pieCard';
+import ChartCard from './chartCard';
+import ListCard from './listCrad';
+import Header from './header';
+import { ModeToggle } from './modeToggle';
+import UsersTable from './userTable';
+import MainCard from './mainCard';
+import { logout } from '../login/actions';
+
+// test
 
 export default function Page() {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
