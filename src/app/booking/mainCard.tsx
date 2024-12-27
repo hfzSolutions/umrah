@@ -10,20 +10,12 @@ import {
 } from '@/components/ui/card'; // Adjust import paths as necessary
 import { TrendingUp } from 'lucide-react'; // Ensure lucide-react is installed
 
-const MainCard = ({
-  title,
-  description,
-  children,
-  showHeader = true,
-  showFooter = false,
-}) => (
+const MainCard = ({ title, description, children, showFooter = false }) => (
   <Card>
-    {showHeader && (
-      <CardHeader>
-        <CardTitle>{title}</CardTitle>
-        <CardDescription>{description}</CardDescription>
-      </CardHeader>
-    )}
+    <CardHeader>
+      <CardTitle>{title}</CardTitle>
+      <CardDescription>{description}</CardDescription>
+    </CardHeader>
     <CardContent>
       {children} {/* Render children passed to the card */}
     </CardContent>

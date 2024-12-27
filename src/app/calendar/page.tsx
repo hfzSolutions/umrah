@@ -1,33 +1,33 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import {
   formatDate,
   DateSelectArg,
   EventClickArg,
   EventApi,
-} from "@fullcalendar/core";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction";
+} from '@fullcalendar/core';
+import FullCalendar from '@fullcalendar/react';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
-} from "@/components/ui/dialog";
+} from '@/components/ui/dialog';
 
-const Calendar: React.FC = () => {
+const Page: React.FC = () => {
   const [currentEvents, setCurrentEvents] = useState<EventApi[]>([]);
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  const [newEventTitle, setNewEventTitle] = useState<string>("");
+  const [newEventTitle, setNewEventTitle] = useState<string>('');
   const [selectedDate, setSelectedDate] = useState<DateSelectArg | null>(null);
 
   useEffect(() => {
     // Load events from local storage when the component mounts
-    if (typeof window !== "undefined") {
-      const savedEvents = localStorage.getItem("events");
+    if (typeof window !== 'undefined') {
+      const savedEvents = localStorage.getItem('events');
       if (savedEvents) {
         setCurrentEvents(JSON.parse(savedEvents));
       }
@@ -36,8 +36,8 @@ const Calendar: React.FC = () => {
 
   useEffect(() => {
     // Save events to local storage whenever they change
-    if (typeof window !== "undefined") {
-      localStorage.setItem("events", JSON.stringify(currentEvents));
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('events', JSON.stringify(currentEvents));
     }
   }, [currentEvents]);
 
@@ -50,7 +50,7 @@ const Calendar: React.FC = () => {
     // Prompt user for confirmation before deleting an event
     if (
       window.confirm(
-        `Are you sure you want to delete the event "${selected.event.title}"?`,
+        `Are you sure you want to delete the event "${selected.event.title}"?`
       )
     ) {
       selected.event.remove();
@@ -59,7 +59,7 @@ const Calendar: React.FC = () => {
 
   const handleCloseDialog = () => {
     setIsDialogOpen(false);
-    setNewEventTitle("");
+    setNewEventTitle('');
   };
 
   const handleAddEvent = (e: React.FormEvent) => {
@@ -105,10 +105,10 @@ const Calendar: React.FC = () => {
                   <br />
                   <label className="text-slate-950">
                     {formatDate(event.start!, {
-                      year: "numeric",
-                      month: "short",
-                      day: "numeric",
-                    })}{" "}
+                      year: 'numeric',
+                      month: 'short',
+                      day: 'numeric',
+                    })}{' '}
                     {/* Format event start date */}
                   </label>
                 </li>
@@ -118,12 +118,12 @@ const Calendar: React.FC = () => {
 
         <div className="w-9/12 mt-8">
           <FullCalendar
-            height={"85vh"}
+            height={'85vh'}
             plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]} // Initialize calendar with required plugins.
             headerToolbar={{
-              left: "prev,next today",
-              center: "title",
-              right: "dayGridMonth,timeGridWeek,timeGridDay,listWeek",
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
             }} // Set header toolbar options.
             initialView="dayGridMonth" // Initial view mode of the calendar.
             editable={true} // Allow events to be edited.
@@ -134,8 +134,8 @@ const Calendar: React.FC = () => {
             eventClick={handleEventClick} // Handle clicking on events (e.g., to delete them).
             eventsSet={(events) => setCurrentEvents(events)} // Update state with current events whenever they change.
             initialEvents={
-              typeof window !== "undefined"
-                ? JSON.parse(localStorage.getItem("events") || "[]")
+              typeof window !== 'undefined'
+                ? JSON.parse(localStorage.getItem('events') || '[]')
                 : []
             } // Initial events loaded from local storage.
           />
@@ -162,7 +162,7 @@ const Calendar: React.FC = () => {
               type="submit"
             >
               Add
-            </button>{" "}
+            </button>{' '}
             {/* Button to submit new event */}
           </form>
         </DialogContent>
@@ -171,4 +171,4 @@ const Calendar: React.FC = () => {
   );
 };
 
-export default Calendar; // Export the Calendar component for use in other parts of the application.
+export default Page; // Export the Calendar component for use in other parts of the application.

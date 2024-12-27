@@ -15,9 +15,7 @@ import UsersTable from './userTable';
 import MainCard from './mainCard';
 import { logout } from '../login/actions';
 
-// test
-
-export default function Page() {
+const Page: React.FC = () => {
   const [date, setDate] = React.useState<Date | undefined>(new Date());
 
   return (
@@ -68,4 +66,6 @@ export default function Page() {
       </div>
     </div>
   );
-}
+};
+
+export default Page;
